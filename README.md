@@ -1,5 +1,7 @@
 # OOCSS (forked)
 
+TODO: Extract Vagrant components to a Grunt workflow.
+
 ## Install
 
 ```
