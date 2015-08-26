@@ -1,6 +1,8 @@
 # OOCSS (VM-free version)
 
-## Install Build Tools
+## Getting Started
+
+### Install Build Tools
 
 ```
 cd tools && npm install
@@ -9,7 +11,26 @@ gem install compass
 gem install terminal-notifier
 ```
 
-## Build tasks
+### Build The Docs
+
+```
+make build
+```
+
+Then open `build/template/template.html` in your browser.
+
+## Making It Your Own
+
+Edit the files in `src/`.
+
+For example:
+
+- Changing `[Client name]` in `src/includes/_headTemplate.handlebars` updates the library page title.
+- Changing `OOCSS` in `src/includes/_header.handlebars` updates the library page's header text.
+
+Use the other build tasks to create new components and update the library.
+
+## Task List
 
 - `make build`
 - `make watch`
@@ -18,42 +39,3 @@ gem install terminal-notifier
   name you specify. E.g. `make component -name button`. This will
   automatically create the component folder, Sass, handlebar and JavaScript
   files.
-
-## Directory Structure
-
-- `src/`: SASS, handlebars, JavaScript, and JSON
-- `build/`: Compile to CSS, HTML, and concatenated JavaScript
-
----
-
-## How the build tasks work
-
-Build:
-
-```
-# Runs clean first, then...
-mkdir -p build/css
-cd tools/config && compass compile
-mkdir -p build/docs
-node tools/build
-```
-
-Watch:
-
-```
-node tools/watch
-```
-
-Clean:
-
-```
-rm -rf build
-rm -rf workshop*
-cd tools/config && compass clean
-```
-
-Full reset:
-
-```
-rm -rf tools/node_modules
-```
