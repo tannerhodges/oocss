@@ -1,12 +1,12 @@
-# OOCSS (forked)
+# OOCSS (VM-free version)
 
-TODO: Extract Vagrant components to a Grunt workflow.
-
-## Install
+## Install Build Tools
 
 ```
-vagrant up
-vagrant ssh
+cd tools && npm install
+gem install compass
+# Bonus: Mac Notifier
+gem install terminal-notifier
 ```
 
 ## Build tasks
@@ -23,3 +23,37 @@ vagrant ssh
 
 - `src/`: SASS, handlebars, JavaScript, and JSON
 - `build/`: Compile to CSS, HTML, and concatenated JavaScript
+
+---
+
+## How the build tasks work
+
+Build:
+
+```
+# Runs clean first, then...
+mkdir -p build/css
+cd tools/config && compass compile
+mkdir -p build/docs
+node tools/build
+```
+
+Watch:
+
+```
+node tools/watch
+```
+
+Clean:
+
+```
+rm -rf build
+rm -rf workshop*
+cd tools/config && compass clean
+```
+
+Full reset:
+
+```
+rm -rf tools/node_modules
+```
